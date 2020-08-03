@@ -1,0 +1,215 @@
+//----------------------------------------LINUX-------------------------------------
+top // Mirar la memoria y los cores de la maquinas
+htop // Mirar la memoria y los cores de la maquinas de manera mas intuitiva
+
+free -h // Verificar la memoria y la memoria swap
+
+du -h // Mostrar el tamaño en disco de los directorios y ficheros
+
+ps aux // Procesos que se estan ejecutando
+
+ps aux | grep {palabra-filtro} // Filtrar los procesos por una palabra clave
+
+sudo ps auxf | sort -nr -k 3 | head -5: Muestra los 5 procesos que más uso hacen del CPU
+sudo ps auxf | sort -nr -k 4 | head -5: Muestra los 5 procesos que más uso hacen de la memoria RAM
+
+jobs // Ver los procesos detenidos
+
+fg // Ejecutar los procesos detenidos
+
+kill -9 {PID} // Detener un proceso especifico
+
+df -h // Mirar el disco de la maquina
+
+tar -cvf Videos.tar ./Latest/* // Comprimir todo lo que esta en Latest
+
+tar -xvzf bigfile.tar.gz // Descomprimir un comprimido
+
+curl -v https://platzi.com // Peticion http
+
+wget {nombre-dominio} // Descargar paquetes desde consola
+
+tail -999f archivo.txt // Ver las ultimas 999 lineas de un fichero
+
+head -n 10 archivo.txt // Ver las primeras 10 lineas de un fichero
+
+{nombre-comando} < archivo.txt // Ejecuta un comando con la entrada de datos de un archivo
+
+{nombre-comando} > archivo.txt // Ejecuta un comando y la salida la almacena en un archivo
+
+chmod 777 archivo.txt // Dar todos los permisos al usuario, grupo y otros
+
+chmod ugo+x archivo.txt // Dar permisos de ejecucion al usuario, grupo y otros
+
+chown {username} archivo.txt // Cambia el usuario username cómo propietario del archivo.txt
+
+chgroup {groupname} archivo.txt // Cambia el grupo groupname cómo grupo propietario del archivo.txt
+
+ssh {your_username}@{host_ip_address} // Conectarse remotamente a otro servidor
+
+printenv // Ver variables de ambiente
+
+export VAR=Valor // Crear una variable de ambiente VAR
+
+touch {nombre-fichero} // Crear un fichero
+
+cp {fichero-origen} {fichero-destino} // Copiar un fichero en origen adestino
+
+mv {fichero-origen} {fichero-destino} // Cortar un fichero en origen adestino
+
+rm {nombre-fichero} // Eliminar un fichero
+
+rm -r {nombre-fichero} // Eliminar un directorio de manera recursiva
+
+mkdir {nombre-directorio} // Crear un directorio 
+
+rmdir {nombre-directorio} // Eliminar un directorio 
+
+cat {nombre-directorio} // Leer un fichero
+
+less {nombre-directorio} // Leer un fichero de manera paginada
+
+tail {nombre-directorio} // Leer las ultimas 10 lineas un fichero
+
+head {nombre-directorio} // Leer las primeras 10 lineas un fichero
+
+tail -f {nombre-directorio} {nombre-directorio} // Leer las primeras 10 lineas un fichero de manera interacrtiva 
+Nota: Puede monitorear mas de un archivo
+
+ifconfig  // Observar IP's privadas y publicas
+ip a      // Observar IP's privadas y publicas
+
+hostname  // Observar dns 
+
+nslookup {nombre-dominio} // Buscar la ip de un hostname
+
+//------------------------------------------KUBERNETES-------------------------------
+kubectl get nodes // Ver los nodos del cluster
+
+kubectl -n {namespace} get pods //Consultar los pods de un namespace especifico
+
+kubectl --insecure-skip-tls-verify -n appsarus get pods // bandera cuando se vence el certificado
+
+namespace
+-n appsarus
+-n appssimple
+-n apps-prepdn
+-n apps-pos
+-n apps-dllo-arus
+-n apps-dllo-simple
+
+kubectl -n {namespace} logs -f {Id Pod} //Ver logs de un pod especifico. El -f es para ver los logs en tiempo real
+
+kubectl -n {namespace} describe pod {Id Pod} //Descripcion de un pod
+
+kubectl get nodes --insecure-skip-verify // Ver los nodos del cluster excluyendo bandera de certificado
+
+FileServer
+Volum claim: Componente para que los pods accedan al FS (Desaclopar informacion del persistent volum)
+
+Persistent Volum: Componente donde estan los datos del FS
+
+DaemonSet: Recurso para correr solo un componente en kubernetes
+
+kubectl -n {namespace} get pods -o wide //Ver mas informacion (Maquina donde esta instalado)
+ping al id del pod
+
+kubectl -n {namespace} get cm //Consultar configmaps
+kubectl -n {namespace} describe cm // {configmap} // Ver descripcion de un configmap
+
+kubectl -n {namespace} exec -it {Id_Pod} -- /bin/bash //Acceder a la consola
+kubectl -n {namespace} exec -it {Id_Pod} -- /bin/sh  //Acceder a la consola
+
+kubectl cp // Extraer recuerson del 
+
+kubectl -n {namespace} get deployments // Ver deployments
+kubectl -n {namespace} get deployment transaccional-deployment -o yaml // Ver yaml
+
+kubectl config use-context {contexto-cluster} //Acceder a un cluster previamente agregado en el file .kube/config
+
+kubectl explain {recurso} // Explicar la definicion de un recurso, Ej: pod, node, cm, service, pv, pvc...
+
+kubectl explain {recurso} --recursive // Ver las propiedades que se le pueden agregar a un recurso en el yaml
+
+kubectl get pods --all-namespaces // Ver todos los pods de todos los namespaces del cluster
+
+kubectl run // Crear un recurso. Actualmente se encuentra deprecado y cómo reemplazo se usa el create
+kubectl run {nombre-pod} --image{imagen-base} // Crea por defecto un pod a partir de una imagen base de alpine
+
+kubectl -n {namespace} logs -l label=value // Logs de todas las replicas de un mismo pod
+
+kubectl --insecure-skip-tls-verify -n {namespace} scale deployment/sso-generador-planillas-backend --replicas=0 // Cambiar las replicas a 0 de dicho deployment
+
+kubectl --insecure-skip-tls-verify -n {namespace} scale deployment/sso-generador-planillas-backend --replicas=1 // Cambiar las replicas a 1 de dicho deployment
+
+kuebctl delete pod {Id-pod} // Eliminar un pod especifico
+
+kubectl -n {namespace} get pods -w // Observar el estado de los pods en tiempo real
+
+kubectl -n {namespace} create -f {recurso} --validate=false // Evitar error 
+
+kubectl get all // Ver todos los recursos del cluster 
+
+kubectl expose deployment {nombre-deployment} --port=8888 // Exponer un servicio para un deployment
+
+kubectl port-forward {service} {port-local}:{port-cluster} // Exponer el puerto de un servicio por un puerto local, para no usar el nodeport
+
+//----------------------FIN KUBERNETES-----------------------
+
+//--------------------------DOCKER---------------------------
+NOTA: Un contenedor es una imagen o varias imagenes en ejecución
+
+docker info // Información de la infraestructura de la maquina dónde esta instalado docker
+
+sudo systemctl docker start // Iniciar servicio de docker en CENTOS
+sudo systemctl docker status // Verificar estado del servicio de docker
+
+docker search {nombre-imagen:tag} // Buscar imagenes en el docker HUB, EJ: docker search ubuntu:12.04
+
+docker pull {nombre-imagen:tag} // Descargar imagen del docker HUB
+
+docker images // Listar imagenes de docker
+
+docker rmi -f {ID-Imagen} // Eliminar imagen de docker
+
+docker rm -f {ID-Container} // Eliminar contenedor de docker
+
+docker run {nombre-images}  // Ejecutar contenedor, si no existe la descarga del docker HUB
+
+docker ps // Listar contenedores en ejecución
+
+docker ps -a // Contenedores que se han ejecutado
+
+docker run ubuntu ls // Ejecutar contenedor y listar directorios
+
+docker run -i -t ubuntu bash // Ejecutar contenedor y entrar al bash (/bin/bash)
+docker run -it ubuntu
+docker run --name {Nombre contenedor} -it ubuntu // Agregar nombre a un contenedor
+
+docker start {ID-Container} // Ejecutar contenedor nuevamente
+
+docker attach {ID-Container} // Ejecutar contenedor nuevamente con los comandos que se corrieron inicialmente, 
+NOTA: Debe dar docker start antes
+
+docker stop {ID-Container} // Para un contenedor corriendo
+
+docker commit {ID-Container} {Nombre-contenedor-Crear}  // Crear un contenedor en base a otro
+
+docker run -d -p {#puertoAExponer:#puertoAExponerEnContenedor} apache // Ejecuta un contenedor y expone un servicio en un puerto 
+
+##############-----DockerFile-----###############
+FROM: Definir imagen base
+MANTAINER: Referencia al creador
+RUN: Ejecutar comandos en la imagen base antes de ser creada
+ADD/COPY: Agregar o copiar archivos del equipo local a la imagen
+EXPOSE: Exponer un puerto por defecto para el contenedor
+CMD: Ejecutar accion por defecto al crear el contenedor
+
+docker build . -t {nombreimagen:tag}  // Crear imagen con Dockerfile
+
+docker login harbor.da.arus.com.co // Acceder al Harbor, para pushear y pullear imagenes
+docker push {nombreimagen:tag} // Subir a una imagen al repositorio de imagenes
+
+ctr+p + ctrl+q // Salir de un contenedor interacrtivo sin cerrarlo
+
+docker-compose up // Ejecutar varios contenedores a partir de un archivo de propiedades docker-compose.yml
