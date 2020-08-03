@@ -1,4 +1,4 @@
-//----------------------------------------LINUX-------------------------------------
+//----------------------------------------LINUX------------------------------------
 top // Mirar la memoria y los cores de la maquinas
 htop // Mirar la memoria y los cores de la maquinas de manera mas intuitiva
 
