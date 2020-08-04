@@ -83,6 +83,11 @@ hostname  // Observar dns
 
 nslookup {nombre-dominio} // Buscar la ip de un hostname
 
+useradd {username} // Agregar un usuario al servidor
+// /etc/passwd  // Usuarios del sistema
+
+adduser {username} // Agrega un usuario al servidor, con un password y un directorio en el home
+userdel {username} // Elimina un usuario del servidor
 //------------------------------------------KUBERNETES-------------------------------
 kubectl get nodes // Ver los nodos del cluster
 
