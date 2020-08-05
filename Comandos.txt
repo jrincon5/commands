@@ -88,6 +88,22 @@ useradd {username} // Agregar un usuario al servidor
 
 adduser {username} // Agrega un usuario al servidor, con un password y un directorio en el home
 userdel {username} // Elimina un usuario del servidor
+
+su - {username} // Cambiarse de usuario
+
+groups {user} // Ver los grupos a los que pertenece un usuario
+
+sudo gpasswd -a {usuario} {group} // Agrgar un usuario a un grupo EJ: sudo gpasswd -a ceiba sudo, sudo gpasswd -a ceiba wheel
+
+sudo gpasswd -d {usuario} {group} // Eliminar un usuario de un grupo
+
+sudo usermod -aG {group} {user} // Agregar un usuario a un grupo
+
+pwscore // Validar una contraseña, numero indica que tan fuerte es la contraseña
+
+ulimit -a // Permisos del usuario
+
+ulimit -u 10 // EL usuario solo podra ejecutar 10 procesos
 //------------------------------------------KUBERNETES-------------------------------
 kubectl get nodes // Ver los nodos del cluster
 
