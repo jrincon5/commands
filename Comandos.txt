@@ -104,6 +104,18 @@ pwscore // Validar una contraseÃ±a, numero indica que tan fuerte es la contraseÃ
 ulimit -a // Permisos del usuario
 
 ulimit -u 10 // EL usuario solo podra ejecutar 10 procesos
+
+sudo systemctl status {servicio} // Estado de un servicio 
+sudo systemctl enable {servicio} // Habilitar un servicio (Si es disabled -> No se inicia con el SO)
+sudo systemctl disable {servicio} // Deshabilita un servicio
+sudo systemctl start {servicio} // Enciende un servicio
+sudo systemctl stop {servicio} // Apaga un servicio
+sudo systemctl restart {servicio} // Reinicia un servicio
+sudo systemctl list-units -t service --all // Listar todos los servicios del servidor
+sudo journalctl -fu {servicio} // Muestra el log de un servicio
+sudo journalctl --list-boots // Muestra los booteos de la computadora
+
+sudo netstat -tulp // Puertos que hay ocupados
 //------------------------------------------KUBERNETES-------------------------------
 kubectl get nodes // Ver los nodos del cluster
 
