@@ -121,15 +121,7 @@ kubectl get nodes // Ver los nodos del cluster
 
 kubectl -n {namespace} get pods //Consultar los pods de un namespace especifico
 
-kubectl --insecure-skip-tls-verify -n appsarus get pods // bandera cuando se vence el certificado
-
-namespace
--n appsarus
--n appssimple
--n apps-prepdn
--n apps-pos
--n apps-dllo-arus
--n apps-dllo-simple
+kubectl --insecure-skip-tls-verify -n namespace get pods // bandera cuando se vence el certificado
 
 kubectl -n {namespace} logs -f {Id Pod} //Ver logs de un pod especifico. El -f es para ver los logs en tiempo real
 
@@ -240,7 +232,7 @@ CMD: Ejecutar accion por defecto al crear el contenedor
 
 docker build . -t {nombreimagen:tag}  // Crear imagen con Dockerfile
 
-docker login harbor.da.arus.com.co // Acceder al Harbor, para pushear y pullear imagenes
+docker login url.docker.hub // Acceder al Harbor, para pushear y pullear imagenes
 docker push {nombreimagen:tag} // Subir a una imagen al repositorio de imagenes
 
 ctr+p + ctrl+q // Salir de un contenedor interacrtivo sin cerrarlo
